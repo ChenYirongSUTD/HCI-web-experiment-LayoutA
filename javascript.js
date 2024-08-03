@@ -405,6 +405,30 @@ document.addEventListener("DOMContentLoaded", function () {
       updateParticipantsHiddenField();
     });
   });
+
+  // Edit Title
+  titleBtn.addEventListener("click", function () {
+    const titleElement = document.getElementById("meeting-title");
+    let isEditing = titleElement.querySelector("input.edit-mode") != null;
+    if (isEditing) {
+      // Save changes
+      const input = titleElement.querySelector("input.edit-mode");
+      const newText = input.value;
+      titleElement.innerHTML = newText;
+      titleBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
+      isEditing = false;
+    } else {
+      // Enter edit mode
+      const currentText = titleElement.innerText.trim();
+      const input = document.createElement("input");
+      input.value = currentText;
+      input.classList.add("edit-mode");
+      titleElement.innerHTML = "";
+      titleElement.appendChild(input);
+      titleBtn.innerHTML = '<i class="bi bi-save"></i>Save';
+      isEditing = true;
+    }
+  });
   minuteBtn.click();
   setTimeout(() => minuteBtn.click(), 0);
 });
