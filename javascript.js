@@ -23,7 +23,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const titleBtn = document.getElementById("edit-title-btn");
   const minuteBtn = document.getElementById("edit-minutes-btn");
 
-  function toggleEditMode(button, sectionId, inputType = "input", multiline = false) {
+  function toggleEditMode(
+    button,
+    sectionId,
+    inputType = "input",
+    multiline = false
+  ) {
     const section = document.getElementById(sectionId);
     let isEditing = section.querySelector(inputType + ".edit-mode") != null;
 
@@ -33,7 +38,29 @@ document.addEventListener("DOMContentLoaded", function () {
       const newText = input.value;
 
       if (inputType === "textarea") {
-        const formattedText = newText.replace(/\n/g, "<br>");
+        const keywords = [
+          "Event Overview and Objectives",
+          "Venue and Logistics",
+          "Budget and Fundraising",
+          "Marketing and Promotion",
+          "Volunteer Coordination",
+          "Entertainment and Activities",
+          "Safety and Health Measures",
+          "Post-Event Evaluation",
+          "Next Steps and Follow-Up",
+          "Agenda Summaries",
+        ];
+
+        let formattedText = newText.replace(/\n/g, "<br>");
+
+        keywords.forEach((keyword) => {
+          const regex = new RegExp(`(${keyword})`, "g");
+          formattedText = formattedText.replace(
+            regex,
+            "<strong><u>$1</u></strong>"
+          );
+        });
+        console.log(formattedText);
         section.innerHTML = `<p id="${sectionId}-text" class="description-text">${formattedText}</p>`;
         section.classList.remove("overflow-hidden");
       } else {
@@ -66,8 +93,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  minuteBtn.addEventListener("click", () => toggleEditMode(minuteBtn, "minutes-text", "textarea", true));
-  descriptionBtn.addEventListener("click", () => toggleEditMode(descriptionBtn, "description-text", "textarea", true));
+  minuteBtn.addEventListener("click", () =>
+    toggleEditMode(minuteBtn, "minutes-text", "textarea", true)
+  );
+  descriptionBtn.addEventListener("click", () =>
+    toggleEditMode(descriptionBtn, "description-text", "textarea", true)
+  );
   agendaBtn.addEventListener("click", () => {
     const agendaList = document.getElementById("agenda-list");
     const agendaItems = agendaList.querySelectorAll("li");
@@ -83,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      addAgendaItemButton.style.display = 'none';
+      addAgendaItemButton.style.display = "none";
       agendaBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
       isEditing = false;
     } else {
@@ -97,21 +128,21 @@ document.addEventListener("DOMContentLoaded", function () {
         item.appendChild(input);
       });
 
-      addAgendaItemButton.style.display = 'block';
+      addAgendaItemButton.style.display = "block";
       agendaBtn.innerHTML = '<i class="bi bi-save"></i>Save';
       isEditing = true;
     }
   });
 
-  addAgendaItemButton.addEventListener('click', function() {
-    const agendaList = document.getElementById('agenda-list');
-    const newListItem = document.createElement('li');
-    newListItem.classList.add('full-width-item');
+  addAgendaItemButton.addEventListener("click", function () {
+    const agendaList = document.getElementById("agenda-list");
+    const newListItem = document.createElement("li");
+    newListItem.classList.add("full-width-item");
 
-    const newInput = document.createElement('input');
-    newInput.type = 'text';
-    newInput.placeholder = 'Enter new agenda item';
-    newInput.classList.add('edit-mode');
+    const newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.placeholder = "Enter new agenda item";
+    newInput.classList.add("edit-mode");
 
     newListItem.appendChild(newInput);
     agendaList.appendChild(newListItem);
@@ -294,27 +325,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // Convert `#minutes-text` to HTML
   const minutesText = document.getElementById("minutes-text");
   if (minutesText) {
-    const formattedText = minutesText.innerHTML.replace(/<br>/g, "\n"); // Convert <br> to new lines
+    const formattedText = minutesText.innerHTML.replace(/<br \/>/g, "\n"); // Convert <br> to new lines
     minutesText.innerHTML = formattedText;
   }
 
   // Participants-related functions
   function toggleParticipantsEditMode() {
-    let isEditing = participantsBtn.innerHTML.includes('Save');
+    let isEditing = participantsBtn.innerHTML.includes("Save");
 
     if (isEditing) {
       // Exit edit mode
-      document.querySelectorAll('.delete-participant-btn').forEach(button => {
-        button.style.display = 'none';
+      document.querySelectorAll(".delete-participant-btn").forEach((button) => {
+        button.style.display = "none";
       });
-      document.getElementById('participants-input-section').style.display = 'none';
+      document.getElementById("participants-input-section").style.display =
+        "none";
       participantsBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
     } else {
       // Enter edit mode
-      document.querySelectorAll('.delete-participant-btn').forEach(button => {
-        button.style.display = 'inline-block';
+      document.querySelectorAll(".delete-participant-btn").forEach((button) => {
+        button.style.display = "inline-block";
       });
-      document.getElementById('participants-input-section').style.display = 'block';
+      document.getElementById("participants-input-section").style.display =
+        "block";
       participantsBtn.innerHTML = '<i class="bi bi-save"></i>Save';
     }
   }
@@ -322,9 +355,9 @@ document.addEventListener("DOMContentLoaded", function () {
   participantsBtn.addEventListener("click", toggleParticipantsEditMode);
 
   function addParticipant(name) {
-    const participantsList = document.getElementById('participants-list');
-    const participantItem = document.createElement('li');
-    participantItem.className = 'participant-bubble';
+    const participantsList = document.getElementById("participants-list");
+    const participantItem = document.createElement("li");
+    participantItem.className = "participant-bubble";
     participantItem.innerHTML = `
       <span>${name}</span>
       <button type="button" class="delete-participant-btn" style="margin-left: 10px; background: none; border: none; cursor: pointer;">
@@ -334,38 +367,44 @@ document.addEventListener("DOMContentLoaded", function () {
     participantsList.appendChild(participantItem);
 
     // Add event listener to delete button
-    participantItem.querySelector('.delete-participant-btn').addEventListener('click', function() {
-      participantItem.remove();
-      updateParticipantsHiddenField();
-    });
+    participantItem
+      .querySelector(".delete-participant-btn")
+      .addEventListener("click", function () {
+        participantItem.remove();
+        updateParticipantsHiddenField();
+      });
 
     updateParticipantsHiddenField();
   }
 
-  const participantsList = document.getElementById('participants-list');
-  const hiddenField = document.getElementById('participants-hidden-field');
-  const participantInput = document.getElementById('participant-input');
+  const participantsList = document.getElementById("participants-list");
+  const hiddenField = document.getElementById("participants-hidden-field");
+  const participantInput = document.getElementById("participant-input");
 
   function updateParticipantsHiddenField() {
-    const participants = Array.from(document.querySelectorAll('#participants-list .participant-bubble span')).map(span => span.textContent);
-    hiddenField.value = participants.join(', ');
+    const participants = Array.from(
+      document.querySelectorAll("#participants-list .participant-bubble span")
+    ).map((span) => span.textContent);
+    hiddenField.value = participants.join(", ");
   }
 
-  participantInput.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
+  participantInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
       const name = participantInput.value.trim();
       if (name) {
         addParticipant(name);
-        participantInput.value = '';
+        participantInput.value = "";
       }
     }
   });
 
   // Initial event listeners for existing participants
-  document.querySelectorAll('.delete-participant-btn').forEach(button => {
-    button.addEventListener('click', function() {
+  document.querySelectorAll(".delete-participant-btn").forEach((button) => {
+    button.addEventListener("click", function () {
       this.parentElement.remove();
       updateParticipantsHiddenField();
     });
   });
+  minuteBtn.click();
+  setTimeout(() => minuteBtn.click(), 0);
 });
