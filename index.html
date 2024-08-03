@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>MinutesInSeconds</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta charset="UTF-8" />
@@ -81,8 +81,7 @@
               </div>
               <div id="minutes-text" class="scrollable-bubble">
                 <p>
-                  <strong><u>Event Overview and Objectives</u></strong
-                  ><br />
+                  <strong><u>Event Overview and Objectives</u></strong><br />
                   The main goals were reviewed, focusing on community engagement
                   and raising funds for local charities. Decided on event
                   features including a BBQ, live music, kids' games, and a
@@ -157,6 +156,7 @@
                 </p>
               </div>
             </div>
+            
             <div class="content-section">
               <div class="header-with-button">
                 <h3>Agenda</h3>
@@ -178,7 +178,16 @@
                 <li class="full-width-item">Next Steps and Follow-Up</li>
                 <li class="full-width-item">Agenda Summaries</li>
               </ul>
+              <button id="add-agenda-item-btn" style="
+                color: white; /* White font color */
+                background-color: black; /* Black background */
+                border: 0.1px solid black; /* Black border */
+                font-size: 1em; /* Adjust font size as needed */
+                border-radius: 20px;
+                display: none; /* Hide the button initially */
+              ">+</button>
             </div>
+            
           </div>
           <!-- Right Column -->
           <div class="right-column">
@@ -299,6 +308,7 @@
                 </button>
               </div>
             </div>
+
             <div class="content-section">
               <div class="header-with-button">
                 <h3>Participants</h3>
@@ -306,13 +316,45 @@
                   <i class="bi bi-pencil"></i>Edit
                 </button>
               </div>
-              <ul>
-                <li id="participants" class="full-width-item">
-                  Alex Thompson, Jamie Patel, Taylor Reynolds, Casey Lee, Jordan
-                  Miller
+              <ul id="participants-list" class="participants-list">
+                <li class="participant-bubble">
+                  <span>Alex Thompson</span>
+                  <button type="button" class="delete-participant-btn" style="display: none; margin-left: 10px; background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </li>
+                <li class="participant-bubble">
+                  <span>Jamie Patel</span>
+                  <button type="button" class="delete-participant-btn" style="display: none; margin-left: 10px; background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </li>
+                <li class="participant-bubble">
+                  <span>Taylor Reynolds</span>
+                  <button type="button" class="delete-participant-btn" style="display: none; margin-left: 10px; background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </li>
+                <li class="participant-bubble">
+                  <span>Casey Lee</span>
+                  <button type="button" class="delete-participant-btn" style="display: none; margin-left: 10px; background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
+                </li>
+                <li class="participant-bubble">
+                  <span>Jordan Miller</span>
+                  <button type="button" class="delete-participant-btn" style="display: none; margin-left: 10px; background: none; border: none; cursor: pointer;">
+                    <i class="bi bi-x-circle"></i>
+                  </button>
                 </li>
               </ul>
+              <input type="hidden" name="meeting[participants]" id="participants-hidden-field" value="Alex Thompson, Jamie Patel, Taylor Reynolds, Casey Lee, Jordan Miller">
+              <div id="participants-input-section" style="display: none;">
+                <input type="text" id="participant-input" placeholder="Enter participant name and press Enter" class="form-control">
+              </div>
             </div>
+            
+
             <div class="content-section">
               <div class="header-with-button">
                 <h3>Description</h3>
@@ -358,21 +400,5 @@
         </li>
       </ul>
     </div>
-  </body>
+</body>
 </html>
-
-<style>
-  .fixed-card {
-    position: fixed;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    height: auto;
-    background-color: white; /* Optional: Add background color */
-    border: 3px solid #ccc; /* Optional: Add border */
-    padding: 10px; /* Optional: Add padding */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
-    z-index: 1000; /* Ensure it floats above other content */
-  }
-</style>
