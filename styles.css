@@ -268,3 +268,17 @@ ul li {
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+.fixed-card {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  background-color: white; /* Optional: Add background color */
+  border: 3px solid #ccc; /* Optional: Add border */
+  padding: 10px; /* Optional: Add padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+  z-index: 1000; /* Ensure it floats above other content */
+}
