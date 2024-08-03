@@ -19,18 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const agendaBtn = document.getElementById("edit-agenda-btn");
   const actionItemsBtn = document.getElementById("edit-action-items-btn");
   const addActionItemButton = document.getElementById("add-action-item-btn");
+  const addAgendaItemButton = document.getElementById("add-agenda-item-btn");
   const titleBtn = document.getElementById("edit-title-btn");
   const minuteBtn = document.getElementById("edit-minutes-btn");
 
-  function toggleEditMode(
-    button,
-    sectionId,
-    inputType = "input",
-    multiline = false
-  ) {
+  function toggleEditMode(button, sectionId, inputType = "input", multiline = false) {
     const section = document.getElementById(sectionId);
     let isEditing = section.querySelector(inputType + ".edit-mode") != null;
-    console.log(sectionId, multiline);
 
     if (isEditing) {
       // Save changes
@@ -38,29 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const newText = input.value;
 
       if (inputType === "textarea") {
-        const keywords = [
-          "Event Overview and Objectives",
-          "Venue and Logistics",
-          "Budget and Fundraising",
-          "Marketing and Promotion",
-          "Volunteer Coordination",
-          "Entertainment and Activities",
-          "Safety and Health Measures",
-          "Post-Event Evaluation",
-          "Next Steps and Follow-Up",
-          "Agenda Summaries",
-        ];
-
-        let formattedText = newText.replace(/\n/g, "<br>");
-
-        keywords.forEach((keyword) => {
-          const regex = new RegExp(`(${keyword})`, "g");
-          formattedText = formattedText.replace(
-            regex,
-            "<strong><u>$1</u></strong>"
-          );
-        });
-
+        const formattedText = newText.replace(/\n/g, "<br>");
         section.innerHTML = `<p id="${sectionId}-text" class="description-text">${formattedText}</p>`;
         section.classList.remove("overflow-hidden");
       } else {
@@ -93,16 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  minuteBtn.addEventListener("click", () =>
-    toggleEditMode(minuteBtn, "minutes-text", "textarea", true)
-  );
-
-  participantsBtn.addEventListener("click", () =>
-    toggleEditMode(participantsBtn, "participants")
-  );
-  descriptionBtn.addEventListener("click", () =>
-    toggleEditMode(descriptionBtn, "description-text", "textarea", true)
-  );
+  minuteBtn.addEventListener("click", () => toggleEditMode(minuteBtn, "minutes-text", "textarea", true));
+  descriptionBtn.addEventListener("click", () => toggleEditMode(descriptionBtn, "description-text", "textarea", true));
   agendaBtn.addEventListener("click", () => {
     const agendaList = document.getElementById("agenda-list");
     const agendaItems = agendaList.querySelectorAll("li");
@@ -118,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+      addAgendaItemButton.style.display = 'none';
       agendaBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
       isEditing = false;
     } else {
@@ -131,9 +97,24 @@ document.addEventListener("DOMContentLoaded", function () {
         item.appendChild(input);
       });
 
+      addAgendaItemButton.style.display = 'block';
       agendaBtn.innerHTML = '<i class="bi bi-save"></i>Save';
       isEditing = true;
     }
+  });
+
+  addAgendaItemButton.addEventListener('click', function() {
+    const agendaList = document.getElementById('agenda-list');
+    const newListItem = document.createElement('li');
+    newListItem.classList.add('full-width-item');
+
+    const newInput = document.createElement('input');
+    newInput.type = 'text';
+    newInput.placeholder = 'Enter new agenda item';
+    newInput.classList.add('edit-mode');
+
+    newListItem.appendChild(newInput);
+    agendaList.appendChild(newListItem);
   });
 
   actionItemsBtn.addEventListener("click", function () {
@@ -281,9 +262,9 @@ document.addEventListener("DOMContentLoaded", function () {
           const div = document.createElement("div");
           div.innerText = suggestion;
           div.addEventListener("click", () => {
-            input.value = suggestion;
+            this.value = suggestion;
             suggestionBox.innerHTML = ""; // Clear suggestions after selection
-            input.disabled = false;
+            this.disabled = false;
           });
           suggestionBox.appendChild(div);
         });
@@ -298,44 +279,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
     input.addEventListener("keydown", function (event) {
       if (event.key === "Enter" || event.key === "Tab") {
-        input.disabled = false;
+        this.disabled = false;
       }
     });
 
     input.addEventListener("focus", function () {
-      if (input.classList.contains("assign-label")) {
-        input.classList.remove("assign-label");
-        input.disabled = false;
+      if (this.classList.contains("assign-label")) {
+        this.classList.remove("assign-label");
+        this.disabled = false;
       }
     });
   });
 
-  // Edit Title
-  titleBtn.addEventListener("click", function () {
-    const titleElement = document.getElementById("meeting-title");
-    let isEditing = titleElement.querySelector("input.edit-mode") != null;
+  // Convert `#minutes-text` to HTML
+  const minutesText = document.getElementById("minutes-text");
+  if (minutesText) {
+    const formattedText = minutesText.innerHTML.replace(/<br>/g, "\n"); // Convert <br> to new lines
+    minutesText.innerHTML = formattedText;
+  }
+
+  // Participants-related functions
+  function toggleParticipantsEditMode() {
+    let isEditing = participantsBtn.innerHTML.includes('Save');
 
     if (isEditing) {
-      // Save changes
-      const input = titleElement.querySelector("input.edit-mode");
-      const newText = input.value;
-      titleElement.innerHTML = newText;
-
-      titleBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
-      isEditing = false;
+      // Exit edit mode
+      document.querySelectorAll('.delete-participant-btn').forEach(button => {
+        button.style.display = 'none';
+      });
+      document.getElementById('participants-input-section').style.display = 'none';
+      participantsBtn.innerHTML = '<i class="bi bi-pencil"></i>Edit';
     } else {
       // Enter edit mode
-      const currentText = titleElement.innerText.trim();
-      const input = document.createElement("input");
-      input.value = currentText;
-      input.classList.add("edit-mode");
-      titleElement.innerHTML = "";
-      titleElement.appendChild(input);
+      document.querySelectorAll('.delete-participant-btn').forEach(button => {
+        button.style.display = 'inline-block';
+      });
+      document.getElementById('participants-input-section').style.display = 'block';
+      participantsBtn.innerHTML = '<i class="bi bi-save"></i>Save';
+    }
+  }
 
-      titleBtn.innerHTML = '<i class="bi bi-save"></i>Save';
-      isEditing = true;
+  participantsBtn.addEventListener("click", toggleParticipantsEditMode);
+
+  function addParticipant(name) {
+    const participantsList = document.getElementById('participants-list');
+    const participantItem = document.createElement('li');
+    participantItem.className = 'participant-bubble';
+    participantItem.innerHTML = `
+      <span>${name}</span>
+      <button type="button" class="delete-participant-btn" style="margin-left: 10px; background: none; border: none; cursor: pointer;">
+        <i class="bi bi-x-circle"></i>
+      </button>
+    `;
+    participantsList.appendChild(participantItem);
+
+    // Add event listener to delete button
+    participantItem.querySelector('.delete-participant-btn').addEventListener('click', function() {
+      participantItem.remove();
+      updateParticipantsHiddenField();
+    });
+
+    updateParticipantsHiddenField();
+  }
+
+  const participantsList = document.getElementById('participants-list');
+  const hiddenField = document.getElementById('participants-hidden-field');
+  const participantInput = document.getElementById('participant-input');
+
+  function updateParticipantsHiddenField() {
+    const participants = Array.from(document.querySelectorAll('#participants-list .participant-bubble span')).map(span => span.textContent);
+    hiddenField.value = participants.join(', ');
+  }
+
+  participantInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      const name = participantInput.value.trim();
+      if (name) {
+        addParticipant(name);
+        participantInput.value = '';
+      }
     }
   });
-minuteBtn.click();
-setTimeout(() => minuteBtn.click(), 0); 
+
+  // Initial event listeners for existing participants
+  document.querySelectorAll('.delete-participant-btn').forEach(button => {
+    button.addEventListener('click', function() {
+      this.parentElement.remove();
+      updateParticipantsHiddenField();
+    });
+  });
 });
