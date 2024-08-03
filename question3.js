@@ -26,6 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add event listener to the Save button
   editMinutesBtn.addEventListener("click", function () {
-    checkMinutesText();
+    setTimeout(function () {
+      checkMinutesText();
+    }, 10);
   });
 });
