@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MinutesInSeconds</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="javascript.js"></script>
+  </head>
+  <body class="d-flex min-vh-100 bg-light" style="overflow-x: hidden">
+    <div class="main-content flex-grow-1">
+      <div class="content-container" style="overflow-x: hidden">
+        <div class="top-bar">
+          <button class="btn download-button" title="Generated Minutes">
+            <i class="bi bi-file-earmark-text"></i>
+            <i class="bi bi-download subscript-icon"></i>
+            <span class="tooltip">Download Generated Minutes</span>
+          </button>
+          <button class="btn download-button" title="Recording (.mp3)">
+            <i class="bi bi-mic"></i>
+            <i class="bi bi-download subscript-icon"></i>
+            <span class="tooltip">Download Recording (.mp3)</span>
+          </button>
+          <button class="btn download-button" title="Transcript (.txt)">
+            <i class="bi bi-file-earmark"></i>
+            <i class="bi bi-download subscript-icon"></i>
+            <span class="tooltip">Download Transcript (.txt)</span>
+          </button>
+        </div>
+
+        <div class="title-header mb-4">
+          <div class="title-header-content">
+            <h1 id="meeting-title">Chalet Welfare Event Planning Meeting</h1>
+            <button id="edit-title-btn" class="btn edit-button">
+              <i class="bi bi-pencil"></i>Edit
+            </button>
+          </div>
+          <div class="meeting-time">
+            3 August 2024, 11:37 AM
+          </div>
+        </div>
+        <div class="flex-container">
+          <!-- Left Column -->
+          <div class="left-column">
+            <div class="content-section">
+              <!-- <h3>Minutes</h3> -->
+              <div class="header-with-button">
+                <h3>Minutes</h3>
+                <button id="edit-minutes-btn" class="btn edit-button">
+                  <i class="bi bi-pencil"></i>Edit
+                </button>
+              </div>
+              <div id="minutes-text" class="scrollable-bubble">
+                <p>
+                  <strong><u>Event Overview and Objectives</u></strong><br>
+                  The main goals were reviewed, focusing on community engagement
+                  and raising funds for local charities. Decided on event
+                  features including a BBQ, live music, kids' games, and a
+                  silent auction. Confirmed the event's start time at 12:00 PM
+                  and end time at 6:00 PM. Discussed the need for clear signage
+                  and information booths to guide attendees.
+                  <br><br>
+                  Venue and Logistics<br>
+                  Confirmed the booking of the chalet, including access for
+                  setup and teardown. Discussed logistics like parking space
+                  management, with a plan to use adjacent fields for overflow
+                  parking. Agreed on layout plans for activity zones, including
+                  designated areas for food, entertainment, and games. Taylor to
+                  finalize arrangements with the venue regarding power supply
+                  and emergency exits. 
+                  <br><br>
+                  Budget and Fundraising<br> 
+                  Reviewed the preliminary budget, including estimated costs for food,
+                  entertainment, and decorations. Established a fundraising goal
+                  of $5,000 with a breakdown of expected contributions from
+                  sponsors and ticket sales. Jamie to prepare a detailed budget
+                  and explore potential sponsors. Discussed ticket pricing and
+                  pre-sale options to maximize early revenue.
+                  <br><br>
+                  Marketing and Promotion<br>
+                  Outlined a comprehensive marketing plan, including social
+                  media, local press, and community bulletin boards. Agreed on
+                  creating an event website with registration and donation
+                  capabilities. Casey to design promotional materials and
+                  coordinate with local media. Discussed strategies for engaging
+                  community influencers and local businesses.
+                  <br><br>
+                  Volunteer Coordination<br>
+                  Identified the need for volunteers for various roles including
+                  setup, managing activity stations, and cleanup. Jordan will
+                  create a sign-up form and distribute it through local schools
+                  and community centers. Discussed volunteer training sessions
+                  to ensure smooth event execution. Set a goal to recruit at
+                  least 20 volunteers by August 10.
+                  <br><br>
+                  Entertainment and Activities<br>
+                  Decided on live music acts, including a local band and a solo
+                  performer. Alex will contact and finalize bookings. Planned
+                  for kids' activities such as face painting and a bounce house,
+                  with Jamie handling these arrangements. Discussed the setup of
+                  a silent auction with donated items. Casey will oversee
+                  collection and organization. Agreed to include a raffle with
+                  prizes donated by local businesses, managed by Jordan.
+                  <br><br>
+                  Safety and Health Measures<br>
+                  Reviewed necessary health protocols including sanitation
+                  stations and first aid availability. Casey and Taylor to
+                  coordinate with local health authorities for guidance on
+                  safety measures. Discussed emergency plans, including
+                  evacuation procedures and contact information for emergency
+                  services. Set up a dedicated safety team from among volunteers
+                  to monitor and manage health concerns during the event.
+                  <br><br>
+                  Post-Event Evaluation<br>
+                  Planned for a post-event survey to gather feedback from
+                  attendees, volunteers, and sponsors. Discussed a debrief
+                  meeting to evaluate the event’s success and areas for
+                  improvement. Alex to draft a survey and create a report
+                  summarizing feedback and overall outcomes. Set a timeline for
+                  post-event analysis and follow-up with sponsors and
+                  volunteers.
+                  <br><br>
+                  Next Steps and Follow-Up<br>
+                  Confirmed action item deadlines and scheduled the next
+                  planning meeting for August 9, 2024. Agreed to send out
+                  updates to all team members regarding their assigned tasks.
+                  Discussed the importance of maintaining clear communication as
+                  the event date approaches.
+                </p>
+              </div>
+            </div>
+            <div class="content-section">
+              <div class="header-with-button">
+                <h3>Agenda</h3>
+                <button id="edit-agenda-btn" class="btn edit-button">
+                  <i class="bi bi-pencil"></i>Edit
+                </button>
+              </div>
+              <ul id="agenda-list">
+                <li class="full-width-item">
+                  1. Event Overview and Objectives
+                </li>
+                <li class="full-width-item">2. Venue and Logistics</li>
+                <li class="full-width-item">3. Budget and Fundraising</li>
+                <li class="full-width-item">4. Marketing and Promotion</li>
+                <li class="full-width-item">5. Volunteer Coordination</li>
+                <li class="full-width-item">6. Entertainment and Activities</li>
+                <li class="full-width-item">7. Safety and Health Measures</li>
+                <li class="full-width-item">8. Post-Event Evaluation</li>
+                <li class="full-width-item">9. Next Steps and Follow-Up</li>
+                <li class="full-width-item">10. Agenda Summaries</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Right Column -->
+          <div class="right-column">
+            <div class="content-section">
+              <div class="header-with-button">
+                <h3>Action Items</h3>
+                <button id="edit-action-items-btn" class="btn edit-button">
+                  <i class="bi bi-pencil"></i>Edit
+                </button>
+              </div>
+              <div class="action-items-container">
+                <ul id="action-items">
+                  <li class="action-item-row full-width-item">
+                    <span>Film lo-fi prototype video</span>
+                    <div style="position: relative">
+                      <input
+                        type="text"
+                        class="assign-input"
+                        placeholder="Assign to …"
+                        disabled
+                      />
+                      <div class="suggestion-list"></div>
+                    </div>
+                  </li>
+                  <li class="action-item-row full-width-item">
+                    <span>Edit script</span>
+                    <div style="position: relative">
+                      <input
+                        type="text"
+                        class="assign-input"
+                        placeholder="Assign to …"
+                        disabled
+                      />
+                      <div class="suggestion-list"></div>
+                    </div>
+                  </li>
+                  <li class="action-item-row full-width-item">
+                    <span>Record observations</span>
+                    <div style="position: relative">
+                      <input
+                        type="text"
+                        class="assign-input"
+                        placeholder="Assign to …"
+                        disabled
+                      />
+                      <div class="suggestion-list"></div>
+                    </div>
+                  </li>
+                </ul>
+                <button id="add-action-item-btn" style="display: none">
+                  Add Action Item
+                </button>
+              </div>
+            </div>
+            <div class="content-section">
+              <div class="header-with-button">
+                <h3>Participants</h3>
+                <button id="edit-participants-btn" class="btn edit-button">
+                  <i class="bi bi-pencil"></i>Edit
+                </button>
+              </div>
+              <ul>
+                <li id="participants" class="full-width-item">
+                  Alex Thompson, Jamie Patel, Taylor Reynolds, Casey Lee, Jordan
+                  Miller
+                </li>
+              </ul>
+            </div>
+            <div class="content-section">
+              <div class="header-with-button">
+                <h3>Description</h3>
+                <button id="edit-description-btn" class="btn edit-button">
+                  <i class="bi bi-pencil"></i>Edit
+                </button>
+              </div>
+              <ul>
+                <li id="description" class="full-width-item">
+                  <span id="description-text" class="description-text"
+                    >Planning meeting for the Chalet Welfare Event scheduled for
+                    August 16, 2024.</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
