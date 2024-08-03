@@ -317,7 +317,7 @@
         class="p-3"
         style="border-radius: 10%; background-color: rgb(205, 249, 234)"
       >
-        <li id="question1" style="display: block">1725</li>
+        <li id="question1" style="display: none">1725</li>
         <li id="question2" style="display: none">4638</li>
         <li id="question3" style="display: none">2907</li>
         <li id="question4" style="display: none">5481</li>
@@ -325,3 +325,19 @@
     </div>
   </body>
 </html>
+
+<style>
+  .fixed-card {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    background-color: white; /* Optional: Add background color */
+    border: 3px solid #ccc; /* Optional: Add border */
+    padding: 10px; /* Optional: Add padding */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+    z-index: 1000; /* Ensure it floats above other content */
+  }
+</style>
