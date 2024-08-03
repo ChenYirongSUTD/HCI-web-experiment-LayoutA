@@ -32,6 +32,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <script src="javascript.js"></script>
+    <script src="answerkeys.js"></script>
   </head>
   <body class="d-flex min-vh-100 bg-light" style="overflow-x: hidden">
     <div class="main-content flex-grow-1">
@@ -162,18 +163,18 @@
                 </button>
               </div>
               <ul id="agenda-list">
-                <li class="full-width-item">
-                  1. Event Overview and Objectives
+                <li class="full-width-item">Event Overview and Objectives</li>
+                <li class="full-width-item">Venue and Logistics</li>
+                <li class="full-width-item">Budget and Fundraising</li>
+                <li class="full-width-item">Marketing and Promotion</li>
+                <li class="full-width-item">Volunteer Coordination</li>
+                <li class="full-width-item">Entertainment and Activities</li>
+                <li class="full-width-item">Safety and Health Measures</li>
+                <li id="post-event-evaluation" class="full-width-item">
+                  Post-Event Evaluation
                 </li>
-                <li class="full-width-item">2. Venue and Logistics</li>
-                <li class="full-width-item">3. Budget and Fundraising</li>
-                <li class="full-width-item">4. Marketing and Promotion</li>
-                <li class="full-width-item">5. Volunteer Coordination</li>
-                <li class="full-width-item">6. Entertainment and Activities</li>
-                <li class="full-width-item">7. Safety and Health Measures</li>
-                <li class="full-width-item">8. Post-Event Evaluation</li>
-                <li class="full-width-item">9. Next Steps and Follow-Up</li>
-                <li class="full-width-item">10. Agenda Summaries</li>
+                <li class="full-width-item">Next Steps and Follow-Up</li>
+                <li class="full-width-item">Agenda Summaries</li>
               </ul>
             </div>
           </div>
@@ -192,80 +193,101 @@
                     <span>Confirm Venue Logistics</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Taylor"
+                      class="assign-input assign-label"
+                      value="Taylor Reynolds"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Prepare Detailed Budget and Sponsorship Plan</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Jamie"
+                      class="assign-input assign-label"
+                      value="Jamie Patel"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Develop and Schedule Promotional Materials</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Casey"
+                      class="assign-input assign-label"
+                      value="Casey Lee"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Create and Distribute Volunteer Sign-Up Form</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Jordan"
+                      class="assign-input assign-label"
+                      value="Jordan Miller"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Coordinate Entertainment Bookings</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Alex"
+                      class="assign-input assign-label"
+                      value="Alex Thompson"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Organize Kids' Activities and Silent Auction</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Jamie"
+                      class="assign-input assign-label"
+                      value="Jamie Patel"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Finalize Safety and Health Protocols</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Casey"
+                      class="assign-input assign-label"
+                      value="Casey Lee"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Draft and Distribute Post-Event Survey</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Alex"
+                      class="assign-input assign-label"
+                      value="Alex Thompson"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Set Up Raffle with Local Businesses</span>
                     <input
                       type="text"
-                      class="assign-input"
-                      placeholder="Jordan"
+                      class="assign-input assign-label"
+                      value="Jordan Miller"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                   <li class="action-item-row full-width-item">
                     <span>Monitor and Adjust Event Layout Plans</span>
                     <input
+                      id="remove-casey"
                       type="text"
-                      class="assign-input"
-                      placeholder="Taylor"
+                      class="assign-input assign-label"
+                      value="Taylor Reynolds"
+                      placeholder="Assign a person"
+                      disabled
                     />
                   </li>
                 </ul>
